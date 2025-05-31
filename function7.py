@@ -30,7 +30,7 @@ def load_companies_from_csv(file_path=path):
         ]
     return list(companies[["company_name", "website"]].itertuples(index=False, name=None))
 
-# --- Setup Driver ---
+#Setup Driver
 def setup_driver():
     options = webdriver.ChromeOptions()
     options.add_argument("--disable-notifications")

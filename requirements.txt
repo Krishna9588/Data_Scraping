@@ -1,0 +1,6 @@
+numpy~=2.2.6
+pandas~=2.2.3
+selenium~=4.33.0
+webdriver-manager~=4.0.2
+requests~=2.32.3
+beautifulsoup4~=4.13.4

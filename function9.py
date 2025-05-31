@@ -79,14 +79,14 @@ def extract_contact_info(driver):
 
     info = {"email": "Not found", "phone": "Not found", "address": "Not found"}
 
-    # Keywords for identifying address blocks
+    # Keywords for identifying address
     address_keywords = ["street", "road", "city", "PO Box", "London", "UK", "India", "US"]
 
     # Regex patterns
     email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
     phone_regex = r'(\+?\d[\s\-()]*\d{2,}[\s\-()]*\d{2,}[\s\-()]*\d{2,}[\s\-()]*\d{2,})'
 
-    # Try finding near headers first
+    # Try to find near headers
     header_texts = ["Contact Us", "Contact Information", "Global Headquarters", "Head Office", "Registered Office"]
     for header_text in header_texts:
         try:
@@ -120,7 +120,7 @@ def extract_contact_info(driver):
         except:
             continue
 
-    # Try common class names
+    # class names
     contact_classes = ["contact-info", "contact-details", "address-block", "footer__text"]
     for cls in contact_classes:
         try:
@@ -139,7 +139,7 @@ def extract_contact_info(driver):
         except:
             continue
 
-    # Fallback: scan body text
+    # scan body text
     try:
         body_text = driver.find_element(By.TAG_NAME, "body").text
         lines = body_text.splitlines()
@@ -151,7 +151,7 @@ def extract_contact_info(driver):
     except:
         pass
 
-    # Final fallback: scan full page source
+    # scan full page source
     try:
         page_source = driver.page_source
         emails = re.findall(email_regex, page_source)
@@ -160,7 +160,7 @@ def extract_contact_info(driver):
         info["email"] = emails[0] if emails else info["email"]
         info["phone"] = phones[0].strip() if phones else info["phone"]
 
-        # Clean up short garbage phone numbers
+    
         if info["phone"] != "Not found" and len(info["phone"]) < 6:
             info["phone"] = "Not found"
 

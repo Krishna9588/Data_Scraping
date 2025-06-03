@@ -7,11 +7,11 @@ Scrape publicly available company data from their websites — focus only on wha
 
 | Field               | Status   | Notes                                           |
 |---------------------|----------|-------------------------------------------------|
-| Website URL         | ✅ Required | Use Google Search fallback if not provided  |
-| General Contact Email | ✅ Required | Usually in “Contact Us” or page footer    |
-| Phone Number        | ✅ Required | Found in footer or contact page             |
-| Location / Address  | ✅ Required | Available on contact or “About” page        |
-| Leadership Names    | ⚠️ Optional | Only if listed under “Team” or “Leadership” |
+| Website URL         | Required | Use Google Search fallback if not provided  |
+| General Contact Email | Required | Usually in “Contact Us” or page footer    |
+| Phone Number        | Required | Found in footer or contact page             |
+| Location / Address  | Required | Available on contact or “About” page        |
+| Leadership Names    | Optional | Only if listed under “Team” or “Leadership” |
 
 Output Required:
 | Company | Website | Email | Phone | Location | Found Leadership Name(s) |

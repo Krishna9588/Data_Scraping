@@ -75,7 +75,7 @@ def navigate_to_contact_page(driver):
 
 # Extract contact info using better regex
 def extract_contact_info(driver):
-    print("🔍 Extracting contact information...")
+    print("...Extracting contact information...")
 
     info = {"email": "Not found", "phone": "Not found", "address": "Not found"}
 
@@ -174,11 +174,11 @@ def scrape_website(company_name, url):
     driver = setup_driver()
     driver.get(url)
 
-    print(f"\n🌐 Scraping: {company_name}")
+    print(f"\nScraping: {company_name}")
 
     accept_cookies(driver)
     if not navigate_to_contact_page(driver):
-        print("⚠️ Using homepage for contact info")
+        print("...Using homepage for contact info")
 
     contact_data = extract_contact_info(driver)
 
@@ -204,4 +204,4 @@ if __name__ == "__main__":
     df = pd.DataFrame(all_results)
     df.to_csv("contact_data_function9.csv", index=False, encoding="utf-8")
     df.to_excel("contact_data_function9.xlsx",index=False)
-    print("\n✅ Data saved to contact_data.csv")
+    print("\n---Data saved to contact_data.csv---")
